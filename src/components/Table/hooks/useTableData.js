@@ -180,6 +180,12 @@ export const useTableData = () => {
   }, []);
 
   useEffect(() => {
+    if (!formValues.search) {
+      getAllCharacterList();
+    }
+  }, [formValues.search]);
+
+  useEffect(() => {
     if (multipleRace.length === 0) {
       getAllCharacterList();
     }
