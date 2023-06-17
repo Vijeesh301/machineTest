@@ -219,7 +219,7 @@ const TableData = () => {
             </Grid>
           </Grid>
           <Grid xs={12} md={12} lg={12}>
-            <TableContainer sx={{ maxHeight: 350 }}>
+            <TableContainer sx={{ maxHeight: 310 }}>
               <Table stickyHeader={true}>
                 <TableHead>
                   <TableRow>
