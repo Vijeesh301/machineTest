@@ -30,7 +30,7 @@ const HomePage = () => {
               sx={{ bgcolor: "grey" }}
               onClick={() => navigate("/table-data")}
             >
-              Enter
+              Login
             </Button>
           </Box>
         </Box>

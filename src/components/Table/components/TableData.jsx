@@ -218,82 +218,94 @@ const TableData = () => {
               </Button>
             </Grid>
           </Grid>
-          <TableContainer sx={{ height: "320px" }}>
-            <Table>
-              <TableHead sx={{ bgcolor: "grey" }}>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Race</TableCell>
-                  <TableCell>Gender</TableCell>
-                  <TableCell>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              {isDataLoading ? (
-                <TableBody>
+          <Grid xs={12} md={12} lg={12}>
+            <TableContainer sx={{ maxHeight: 350 }}>
+              <Table stickyHeader={true}>
+                <TableHead>
                   <TableRow>
-                    <TableCell colSpan={12}>
-                      <Box
-                        display={"flex"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                        height={"30vh"}
-                      >
-                        <RotatingLines
-                          strokeColor="grey"
-                          strokeWidth="5"
-                          animationDuration="0.75"
-                          width="25"
-                          visible={true}
-                        />
-                      </Box>
+                    <TableCell sx={{ color: "white", bgcolor: "grey" }}>
+                      ID
+                    </TableCell>
+                    <TableCell sx={{ color: "white", bgcolor: "grey" }}>
+                      Name
+                    </TableCell>
+                    <TableCell sx={{ color: "white", bgcolor: "grey" }}>
+                      Race
+                    </TableCell>
+                    <TableCell sx={{ color: "white", bgcolor: "grey" }}>
+                      Gender
+                    </TableCell>
+                    <TableCell sx={{ color: "white", bgcolor: "grey" }}>
+                      Actions
                     </TableCell>
                   </TableRow>
-                </TableBody>
-              ) : (
-                <TableBody>
-                  {currentRecords?.map((data, i) => {
-                    return (
-                      <TableRow>
-                        <TableCell>{i + 1}</TableCell>
-                        <TableCell>{data.name}</TableCell>
-                        <TableCell>{data.race}</TableCell>
-                        <TableCell>{data.gender}</TableCell>
-                        <TableCell sx={{ cursor: "pointer" }}>
-                          <Typography
-                            onClick={() => {
-                              setIdData(data._id);
-                              getCharacterDetailsById(data._id);
-                            }}
-                          >
-                            {idData === data._id ? (
-                              isIdDataLoading ? (
-                                <RotatingLines
-                                  strokeColor="grey"
-                                  strokeWidth="5"
-                                  animationDuration="0.75"
-                                  width="15"
-                                  visible={true}
-                                />
+                </TableHead>
+                {isDataLoading ? (
+                  <TableBody>
+                    <TableRow>
+                      <TableCell colSpan={12}>
+                        <Box
+                          display={"flex"}
+                          justifyContent={"center"}
+                          alignItems={"center"}
+                          height={"30vh"}
+                        >
+                          <RotatingLines
+                            strokeColor="grey"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="25"
+                            visible={true}
+                          />
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                ) : (
+                  <TableBody>
+                    {currentRecords?.map((data, i) => {
+                      return (
+                        <TableRow>
+                          <TableCell>{i + 1}</TableCell>
+                          <TableCell>{data.name}</TableCell>
+                          <TableCell>{data.race}</TableCell>
+                          <TableCell>{data.gender}</TableCell>
+                          <TableCell sx={{ cursor: "pointer" }}>
+                            <Typography
+                              onClick={() => {
+                                setIdData(data._id);
+                                getCharacterDetailsById(data._id);
+                              }}
+                            >
+                              {idData === data._id ? (
+                                isIdDataLoading ? (
+                                  <RotatingLines
+                                    strokeColor="grey"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="15"
+                                    visible={true}
+                                  />
+                                ) : (
+                                  <Typography sx={{ fontSize: "14px" }}>
+                                    Details {">>"}
+                                  </Typography>
+                                )
                               ) : (
                                 <Typography sx={{ fontSize: "14px" }}>
-                                  Details {">>"}
+                                  Details {" >> "}
                                 </Typography>
-                              )
-                            ) : (
-                              <Typography sx={{ fontSize: "14px" }}>
-                                Details {" >> "}
-                              </Typography>
-                            )}
-                          </Typography>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              )}
-            </Table>
-          </TableContainer>
+                              )}
+                            </Typography>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                )}
+              </Table>
+            </TableContainer>
+          </Grid>
           <Grid m={2} display={"flex"} justifyContent={"space-between"}>
             <Box>
               <Stack spacing={2}>
